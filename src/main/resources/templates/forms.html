@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Builder</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            margin:0;
+            padding:0;
+            height:100%;
+        }
+        #container {
+            border: 1px solid;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+        #form_header {
+            height: 5%;
+            border: 1px green solid;
+        }
+        #form_footer {
+            border: 1px red solid;
+            height: 5%;
+        }
+        #form {
+            height: 90%;
+            width: 100%;
+            border: 1px blue solid;
+            display: flex;
+        }
+        #fields {
+            border: 1px green solid;
+            width: 20%;
+            height: 100%;
+        }
+        #configurations {
+            border: 1px orange solid;
+            width: 20%;
+            height: 100%;
+        }
+        #form_contents {
+            width: 80%;
+            border: 1px black solid;
+            height: 100%;
+        }
+        #form_name {
+            border: 1px red solid;
+            width: 100%;
+            height: 5%;
+        }
+        #form_questions {
+            border: 1px pink solid;
+            width: 100%;
+            height: 95%;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <header id="form_header">Header</header>
+    <div id="form">
+        <aside id="fields">Fields</aside>
+        <main id="form_contents">
+            <section id="form_name">
+                <input type="text" placeholder="Enter Name Form" />
+            </section>
+            <section id="form_questions">
+            </section>
+        </main>
+        <aside id="configurations">Configurations</aside>
+    </div>
+    <footer id="form_footer">
+        <button type="button" id="saveBtn">Save</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+    </footer>
+</div>
+</body>
+</html>
