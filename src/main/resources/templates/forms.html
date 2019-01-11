@@ -11,6 +11,7 @@
             margin:0;
             padding:0;
             height:100%;
+            font-family: tahoma, arial, verdana, sans-serif;
         }
         #container {
             border: 1px solid;
@@ -21,10 +22,17 @@
         #form_header {
             height: 5%;
             border: 1px green solid;
+            color: #e48d02;
+            background-color: #F1F1F1;
+            padding: 2px 0px 0px 5px;
+            vertical-align: middle;
         }
         #form_footer {
             border: 1px red solid;
             height: 5%;
+        }
+        .buttonset {
+            margin: 5px 0px 0px 350px;
         }
         #form {
             height: 90%;
@@ -48,34 +56,77 @@
             height: 100%;
         }
         #form_name {
-            border: 1px red solid;
             width: 100%;
             height: 5%;
+            padding: 2px 0px 0px 2px;
+        }
+        #name {
+            box-shadow: 0px 5px 18px 0px rgba(50, 50, 50, 0.15);
+            width: 90%;
+            height: 25px;
         }
         #form_questions {
             border: 1px pink solid;
             width: 100%;
             height: 95%;
         }
+        .title {
+            background-color: #7D93A8;
+            padding: 5px;
+            color: white;
+        }
+        #questionTypes {
+            background-color: white;
+            padding: 2px;
+        }
+        .question {
+            color: #7D93A8;
+            background-color: #F1F1F1;
+            margin: 1px 1px 6px 1px;
+            vertical-align: middle;
+            text-align: center;
+            box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+        }
+        button {
+            background-color: rgb(228, 141, 2);
+            color: white;
+            font-size: 15px;
+            width: 100px;
+        }
     </style>
 </head>
 <body>
 <div id="container">
-    <header id="form_header">Header</header>
+    <header id="form_header">Form Builder</header>
     <div id="form">
-        <aside id="fields">Fields</aside>
+        <aside id="fields">
+            <div class="title">Fields</div>
+            <div id="questionTypes">
+                <div class="question">Label</div>
+                <div class="question">Short Answer</div>
+                <div class="question">Long Answer</div>
+                <div class="question">Dropdown</div>
+                <div class="question">Radio</div>
+                <div class="question">Checkbox</div>
+                <div class="question">Calculation</div>
+            </div>
+        </aside>
         <main id="form_contents">
             <section id="form_name">
-                <input type="text" placeholder="Enter Name Form" />
+                <input id="name" type="text" placeholder="Enter Name Form" />
             </section>
             <section id="form_questions">
             </section>
         </main>
-        <aside id="configurations">Configurations</aside>
+        <aside id="configurations">
+            <div class="title">Configurations</div>
+        </aside>
     </div>
     <footer id="form_footer">
-        <button type="button" id="saveBtn">Save</button>
-        <button type="button" id="cancelBtn">Cancel</button>
+        <div class="buttonset">
+            <button type="button" id="saveBtn">Save</button>
+            <button type="button" id="cancelBtn">Cancel</button>
+        </div>
     </footer>
 </div>
 </body>
