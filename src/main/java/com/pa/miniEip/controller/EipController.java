@@ -1,4 +1,4 @@
-package com.pa.miniEip.controllers;
+package com.pa.miniEip.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +10,8 @@ public class EipController {
         return "sourcing";
     }
 
-    @GetMapping("/forms")
-    public String formBuilder() {
-        return "forms";
-    }
+//    @GetMapping("/forms")
+//    public String formBuilder() {
+//        return "forms";
+//    }
 }
