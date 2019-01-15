@@ -1,133 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Form Builder</title>
-    <style>
-        html {
-            height: 100%;
-        }
-        body {
-            margin:0;
-            padding:0;
-            height:100%;
-            font-family: tahoma, arial, verdana, sans-serif;
-        }
-        #container {
-            border: 1px solid;
-            width: 100%;
-            height: 100%;
-            padding: 10px;
-        }
-        #form_header {
-            height: 5%;
-            border: 1px green solid;
-            color: #e48d02;
-            background-color: #F1F1F1;
-            padding: 2px 0px 0px 5px;
-            vertical-align: middle;
-        }
-        #form_footer {
-            border: 1px red solid;
-            height: 5%;
-        }
-        .buttonset {
-            margin: 5px 0px 0px 350px;
-        }
-        #form {
-            height: 90%;
-            width: 100%;
-            border: 1px blue solid;
-            display: flex;
-        }
-        #fields {
-            border: 1px green solid;
-            width: 20%;
-            height: 100%;
-        }
-        #configurations {
-            border: 1px orange solid;
-            width: 20%;
-            height: 100%;
-        }
-        #form_contents {
-            width: 80%;
-            border: 1px black solid;
-            height: 100%;
-        }
-        #form_name {
-            width: 100%;
-            height: 5%;
-            padding: 2px 0px 0px 2px;
-        }
-        #name {
-            box-shadow: 0px 5px 18px 0px rgba(50, 50, 50, 0.15);
-            width: 90%;
-            height: 25px;
-        }
-        #form_questions {
-            border: 1px pink solid;
-            width: 100%;
-            height: 95%;
-        }
-        .title {
-            background-color: #7D93A8;
-            padding: 5px;
-            color: white;
-        }
-        #questionTypes {
-            background-color: white;
-            padding: 2px;
-        }
-        .question {
-            color: #7D93A8;
-            background-color: #F1F1F1;
-            margin: 1px 1px 6px 1px;
-            vertical-align: middle;
-            text-align: center;
-            box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
-        }
-        button {
-            background-color: rgb(228, 141, 2);
-            color: white;
-            font-size: 15px;
-            width: 100px;
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/resources/lib/pa/jquery/plugins/jquery.mask.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/lib/jquery/jquery-ui-1.10.3/themes/base/jquery.ui.datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/lib/jquery/plugins/jquery.gridster.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/lib/pa/jquery/style/jquery-ui-1.10.3-resizable.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/lib/pa/jquery/style/jquery.ui.datepicker.theme.css" />
+    <link rel="stylesheet" type="text/css" href="style/form.css" />
+    <link rel="stylesheet" type="text/css" href="style/library.css" />
+    <link rel="stylesheet" type="text/css" href="style/formEditor.css" />
+    <link rel="stylesheet" type="text/css" href="style/leftPanel.css" />
+    <link rel="stylesheet" type="text/css" href="style/rightPanel.css" />
+
+    <!-- Third Party Libraries -->
+    <script type="text/javascript" src="/resources/lib/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/resources/lib/jquery/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/resources/lib/jquery/plugins/jquery.gridster.js"></script>
+    <script type="text/javascript" src="/resources/lib/jquery/plugins/jquery.ui-contextmenu.min.js"></script>
+
+    <!-- PA Libraries -->
+    <script type="text/javascript" src="/resources/lib/pa/shim/shim.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/util/NamespaceUtil.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/util/ExceptionHandlingUtil.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/util/InputUtil.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/util/URLParametersUtil.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/util/ObjectUtil.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/util/FormulaValidationUtil.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/object/SortedList.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/prototype/Date.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/jquery/plugins/jquery.mask.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/jquery/plugins/jquery.selectable.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/Products.js"></script>
+
+    <!-- PAGrid Framework -->
+    <script type="text/javascript" src="/resources/lib/pa/grid/eventbus/Events.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/document/eventbus/Events.js"></script>
+
+    <!-- Form Framework -->
+    <script type="text/javascript" src="/resources/lib/pa/form/eventbus/Events.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/AbstractQuestionType.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Label.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Textbox.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Textarea.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Select.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Radio.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Checkbox.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/DateSelector.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Document.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Calculation.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionContainerType/Section.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionContainerType/Table.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/Option.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/Format.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/Question.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/Layout.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/Configuration.js"></script>
+    <script type="text/javascript" src="/resources/lib/pa/form/Form.js"></script>
+
+    <script type="text/javascript" src="js/fields/AbstractField.js"></script>
+    <script type="text/javascript" src="js/fields/question/AbstractQuestionField.js"></script>
+    <script type="text/javascript" src="js/fields/question/Checkbox.js"></script>
+    <script type="text/javascript" src="js/fields/question/DateSelector.js"></script>
+    <script type="text/javascript" src="js/fields/question/Document.js"></script>
+    <script type="text/javascript" src="js/fields/question/Label.js"></script>
+    <script type="text/javascript" src="js/fields/question/Radio.js"></script>
+    <script type="text/javascript" src="js/fields/question/Select.js"></script>
+    <script type="text/javascript" src="js/fields/question/Textarea.js"></script>
+    <script type="text/javascript" src="js/fields/question/Textbox.js"></script>
+    <script type="text/javascript" src="js/fields/question/Calculation.js"></script>
+    <script type="text/javascript" src="js/fields/questionContainer/AbstractQuestionContainerField.js"></script>
+    <script type="text/javascript" src="js/fields/questionContainer/Section.js"></script>
+    <script type="text/javascript" src="js/fields/questionContainer/Table.js"></script>
+    <script type="text/javascript" src="js/fields/questionTemplate/DefaultOptionsTemplate.js"></script>
+    <script type="text/javascript" src="js/fields/questionTemplate/RadioYesNoTemplate.js"></script>
+    <script type="text/javascript" src="js/leftPanel/BlockButtonModule.js"></script>
+    <script type="text/javascript" src="js/leftPanel/CreateTableButton.js"></script>
+    <script type="text/javascript" src="js/leftPanel/ChangeQuestionTypeOperation.js"></script>
+    <script type="text/javascript" src="js/leftPanel/ExcelImport.js"></script>
+    <script type="text/javascript" src="js/rightPanel/QuestionTextModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/HiddenOnReportModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/RequiredModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/TextDisplayModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/FormatModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/CalculationExpressionModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/CopyCalculationInTableModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/OptionsModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/OptionsPositionModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/TableSizeModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/TableUngroupModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/AddToLibraryButtonModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/CopyButtonModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/DeleteButtonModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/BlockUngroupModule.js"></script>
+    <script type="text/javascript" src="js/rightPanel/UndoDeleteButtonModule.js"></script>
+    <script type="text/javascript" src="js/Option.js"></script>
+    <script type="text/javascript" src="js/Question.js"></script>
+    <script type="text/javascript" src="js/Configuration.js"></script>
+    <script type="text/javascript" src="js/Form.js"></script>
+    <script type="text/javascript" src="js/FormEventHandlerManager.js"></script>
+    <script type="text/javascript" src="js/Library.js"></script>
+    <script type="text/javascript" src="js/FormEditor.js"></script>
+    <script type="text/javascript" src="js/LeftPanel.js"></script>
+    <script type="text/javascript" src="js/RightPanel.js"></script>
+    <script type="text/javascript" src="js/ConvertToGridFormModule.js"></script>
 </head>
 <body>
-<div id="container">
-    <header id="form_header">Form Builder</header>
-    <div id="form">
-        <aside id="fields">
-            <div class="title">Fields</div>
-            <div id="questionTypes">
-                <div class="question">Label</div>
-                <div class="question">Short Answer</div>
-                <div class="question">Long Answer</div>
-                <div class="question">Dropdown</div>
-                <div class="question">Radio</div>
-                <div class="question">Checkbox</div>
-                <div class="question">Calculation</div>
-            </div>
-        </aside>
-        <main id="form_contents">
-            <section id="form_name">
-                <input id="name" type="text" placeholder="Enter Name Form" />
-            </section>
-            <section id="form_questions">
-            </section>
-        </main>
-        <aside id="configurations">
-            <div class="title">Configurations</div>
-        </aside>
-    </div>
-    <footer id="form_footer">
-        <div class="buttonset">
-            <button type="button" id="saveBtn">Save</button>
-            <button type="button" id="cancelBtn">Cancel</button>
+<div id="centerDiv">
+    <div id="headerDiv">
+        <input id="formName" type="text" class="shadow" onfocus="if(this.value==='Name'){this.value='';}"
+               onblur="if(this.value===''){this.value='Name';}"/>
+        <div id="iconWrapper">
+            <a href="/WebHelp_Sourcing_Intel/WebHelp_Sourcing_Intel.htm#Datasheets/DatasheetBuilder/ds_builder.htm?Highlight=import" target="_blank">
+                <img id="helpIcon" src="/resources/images/form/help_icon.svg" alt="Online Help & Import Template" title="Online Help & Import Template">
+            </a>
         </div>
-    </footer>
+    </div>
+    <div id="form" tabindex="1" class="panel shadow">
+        <div id="addQuestionInstruction">Drag fields here.</div>
+    </div>
+
+    <div id="buttons">
+        <div id="createButton" class="button" style="display:none;" onclick="window.create()">CREATE</div>
+        <div id="saveButton" class="button" style="display:none;" onclick="window.save()">SAVE</div>
+        <div id="cancelButton" class="button" onclick="window.cancel()">CANCEL</div>
+    </div>
+</div>
+
+<div id="droppableDiv"></div>
+
+<div id="leftPanel" class="panel shadow">
+    <h1 id="fields">FIELDS</h1>
+    <div class="accordionPanel">
+        <div class="questionTypeWrapper">
+            <div id="LABEL" class="questionType" title="Plain text without a response">Label</div>
+            <div class="addConfiguration" questionType="LABEL" title="Add a Label to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="TEXTBOX" class="questionType" title="Number or text response on a single line">Short Answer</div>
+            <div class="addConfiguration" questionType="TEXTBOX" title="Add a Short Answer to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="TEXTAREA" class="questionType" title="Text response on multiple lines">Long Answer</div>
+            <div class="addConfiguration" questionType="TEXTAREA" title="Add a Long Answer to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="SELECT" class="questionType" questionTemplate="DefaultOptionsTemplate" title="Select a response from a drop-down">Dropdown</div>
+            <div class="addConfiguration" questionType="SELECT" questionTemplate="DefaultOptionsTemplate" title="Add a Dropdown to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="RADIO" class="questionType" questionTemplate="DefaultOptionsTemplate" title="Select a response from a radio button (single option)">Radio</div>
+            <div class="addConfiguration" questionType="RADIO" questionTemplate="DefaultOptionsTemplate" title="Add a Radio to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="CHECKBOX" class="questionType" questionTemplate="DefaultOptionsTemplate" title="Select a response from checkboxes (multiple options)">Checkbox</div>
+            <div class="addConfiguration" questionType="CHECKBOX" questionTemplate="DefaultOptionsTemplate" title="Add a Checkbox to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="DATESELECTOR" class="questionType" title="Select a date response using a calendar">Date</div>
+            <div class="addConfiguration" questionType="DATESELECTOR" title="Add a Date Selector to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="DOCUMENT" class="questionType" title="File uploaded as a response">File Upload</div>
+            <div class="addConfiguration" questionType="DOCUMENT" title="Add a Document to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="CALCULATION" class="questionType" title="Response calculated from other responses">Calculation</div>
+            <div class="addConfiguration" questionType="CALCULATION" title="Add a Calculation to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="SECTION" class="questionContainerType" title="Grouping of plain text and responses">Block</div>
+            <div class="addConfiguration" questionContainerType="SECTION" title="Add a Block to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div id="TABLE" class="questionContainerType" title="Collection of responses in a table layout">Table</div>
+            <div class="addConfiguration" questionContainerType="TABLE" title="Add a Table to the bottom">+</div>
+        </div>
+        <div class="questionTypeWrapper">
+            <div class="questionType" questionTemplate="RadioYesNoTemplate" title="Select a response from a radio button (yes/no options preconfigured)">Yes/No</div>
+            <div class="addConfiguration" questionTemplate="RadioYesNoTemplate" title="Add a Yes/No Radio to the bottom">+</div>
+        </div>
+        <div id="spacer"></div>
+        <div class="horizontalLine"></div>
+        <div class="importButtonWrapper">
+            <div class="importButton">IMPORT FROM EXCEL</div>
+        </div>
+    </div>
+</div>
+
+<div id="rightPanel" class="panel shadow">
+    <div id="rightPanelAccordionParent">
+        <div id="rightPanelAccordion" ></div>
+    </div>
+    <div id="rightPanelButtonsParent"></div>
 </div>
 </body>
 </html>

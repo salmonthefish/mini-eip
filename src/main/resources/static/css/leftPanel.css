@@ -1,0 +1,231 @@
+#leftPanel {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 150px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+#leftPanel h1 {
+    background-color: #7D93A8;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+#leftPanel h1:focus {
+    outline: 0;
+}
+
+#leftPanel .accordionPanel {
+    padding: 2px;
+}
+
+.questionTypeWrapper {
+    width: 100%;
+    float: left;
+}
+
+.questionContainerType {
+    height: 25px;
+    width: calc(80% - 6px);
+    float: left;
+    background-color: #F1F1F1;
+    color: #7D93A8;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 2px;
+    overflow: hidden;
+    padding: 0px 5px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.questionContainerType:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.questionType {
+    height: 25px;
+    width: calc(80% - 6px);
+    float: left;
+    background-color: #F1F1F1;
+    color: #7D93A8;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 2px;
+    overflow: hidden;
+    padding: 0px 6px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.questionType:hover, .importButton:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.selectedQuestionType {
+    border-color: rgb(228, 141, 2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.importButtonWrapper {
+    width: 100%;
+    float: left;
+}
+
+#leftPanel #spacer {
+    height: calc(100% - 35px);
+}
+
+#leftPanel .horizontalLine {
+    position: relative;
+    left: 1px;
+    height: 1px;
+    width: calc(100% - 2px);
+    background-color: #7D93A8;
+    float: left;
+    margin-bottom: 2px;
+    margin-top: 3px;
+}
+
+.createLibraryButton, .importButton {
+    height: 25px;
+    width: initial;
+    background-color: rgb(228, 141, 2);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 25px;
+    margin: 2px;
+    text-align: center;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+}
+
+.libraryWrapper {
+    width: 100%;
+    float: left;
+}
+
+.library {
+    height: 25px;
+    background-color: #F1F1F1;
+    color: #7D93A8;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 2px;
+    overflow: hidden;
+    padding-left: 6px;
+    padding-right: 13px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: initial;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.library:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.library .name {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.library .toggleButton {
+    float: left;
+}
+
+.questionContainer {
+    /* for every question, add 29px*/
+    margin: 0px 0px 0px 24px;
+}
+
+.addConfiguration {
+    height: 25px;
+    width: 20%;
+    color: #7D93A8;
+    margin-top: 2px;
+    background-color: #F1F1F1;
+    padding-top: 3px;
+    font-weight: bold;
+    float: left;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.disabledAddButton {
+    color: #dedede;
+    background-color: #F1F1F1;
+}

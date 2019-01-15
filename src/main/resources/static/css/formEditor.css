@@ -1,0 +1,142 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(247, 247, 247);
+    font-family: tahoma, arial, verdana, sans-serif;
+    margin: 0px;
+}
+
+.button {
+    height: 25px;
+    width: 100px;
+    background-color: rgb(228, 141, 2);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.button:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.panel {
+    background-color: rgb(255, 255, 255);
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 5px 18px 0px rgba(50, 50, 50, 0.15);
+    -moz-box-shadow: 0px 5px 18px 0px rgba(50, 50, 50, 0.15);
+    box-shadow: 0px 5px 18px 0px rgba(50, 50, 50, 0.15);
+}
+
+#centerDiv {
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    right: 150px;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#droppableDiv {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    z-index: -9999;
+}
+
+#formName {
+    position: absolute;
+    top: 10px;
+    height: 35px;
+    width: calc(100% - 60px);
+    border: 0;
+    color: rgba(50, 50, 50, 0.5);
+    font-size: 16px;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#formName:focus {
+    color: rgb(0, 0, 0);
+}
+
+#buttons {
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    width: 100%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#createButton {
+    margin-right: 5px;
+}
+
+#saveButton {
+    margin-right: 5px;
+}
+
+#cancelButton {
+    margin-right: 5px;
+}
+
+#convertButton {
+    width: 150px;
+}
+
+#undoConvertButton {
+    width: 180px;
+}
+
+.ui-tooltip {
+    position: absolute;
+    max-width: 300px;
+    background-color: #F1F1F1;
+    border-color: rgb(228, 141, 2);
+    border-style: solid;
+    border-width: 1px;
+    color: #7D93A8;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 14px;
+    padding: 4px;
+    z-index: 9999;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+}
+
+#iconWrapper {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+#helpIcon {
+    filter: invert(.5)
+}

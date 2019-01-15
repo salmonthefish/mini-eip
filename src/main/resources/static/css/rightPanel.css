@@ -1,0 +1,326 @@
+#rightPanel {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 150px;
+    font-size: 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+#rightPanel input {
+    font-size: inherit;
+}
+
+#rightPanel select {
+    font-size: inherit;
+}
+
+#rightPanel textarea {
+    font-size: inherit;
+    resize: none;
+}
+
+#rightPanelAccordionParent {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+#rightPanelAccordion h1 {
+    background-color: #7D93A8;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+}
+
+#rightPanelAccordion h1:focus {
+    outline: 0px;
+}
+
+#rightPanelAccordion .accordionPanel {
+    display: none;
+    padding: 4px;
+
+}
+
+#question {
+    display: none;
+}
+
+#text {
+    height: 50px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.styleButtonWrapper {
+    width: 33%;
+    float: left;
+}
+
+.styleButton {
+    height: 20px;
+    background-color: #F1F1F1;
+    color: #7D93A8;
+    cursor: pointer;
+    line-height: 20px;
+    margin: 3px 0px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+}
+
+.styleButton:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.selectedStyleButton {
+    border-color: rgb(228, 141, 2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+    margin: 3px 4px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+#font {
+    height: 20px;
+    width: 67%;
+    float: left;
+    margin: 3px 1% 3px 0px;
+}
+
+#fontSize {
+    height: 20px;
+    width: 32%;
+    float: left;
+    margin: 3px 0px;
+}
+
+#position {
+    height: 20px;
+    width: 100%;
+    margin: 3px 0px;
+}
+
+.checkbox {
+    width: 100%;
+}
+
+.checkbox .label {
+    height: 20px;
+    line-height: 20px;
+}
+
+.checkbox input {
+    height: 20px;
+    float: right;
+    margin: 0px;
+}
+
+#format {
+    width: 100%;
+}
+
+#format .label {
+    height: 20px;
+    line-height: 16px;
+}
+
+#format select {
+    float: right;
+}
+
+.numberbox {
+    height: 26px;
+    line-height: 26px;
+}
+
+.numberbox input {
+    height: 20px;
+    width: 50px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 3px 0px;
+    float: right;
+    text-align: right;
+}
+
+#calculationFormulaText {
+    height: 50px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.calculationFormulaTextError {
+    border-width: 1px;
+    border-color: red;
+}
+
+#calculationHelpLink {
+    float: right;
+    font-size: 11px;
+    text-decoration: underline;
+    margin-top: 2px;
+    color: blue;
+}
+
+#calculationHelpLink:hover {
+    color: darkblue;
+    cursor: pointer;
+}
+
+#expressionError {
+    color: #FF0000;
+    font-style: italic;
+}
+
+#changeTableSizeButton {
+    margin-top: 6px;
+}
+
+#options {
+    display: none;
+}
+
+#optionPosition {
+    height: 20px;
+    width: 100%;
+}
+
+#addOption {
+    height: 20px;
+    width: 20px;
+    background-color: #F1F1F1;
+    color: #7D93A8;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 3px 3px 3px 0px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+}
+
+#addOption:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+.optionTextWrapper {
+    overflow: hidden;
+    padding-right: 5px;
+}
+
+.optionText {
+    height: 20px;
+    width: 100%;
+    background-color: #F1F1F1;
+    border: 0px;
+    color: #7D93A8;
+    cursor: text;
+    line-height: 20px;
+    margin: 3px 0px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+}
+
+.optionText:focus {
+    outline-color: rgb(228, 141, 2);
+}
+
+.deleteOption {
+    height: 20px;
+    width: 20px;
+    background-color: #F1F1F1;
+    color: #7D93A8;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    line-height: 18px;
+    margin: 3px 3px 3px 0px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25);
+}
+
+.deleteOption:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.25);
+}
+
+#rightPanelButtonsParent {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: auto;
+}
+
+.rightPanelButton {
+    position: relative;
+    left: 7px;
+    margin-bottom: 7px;
+    width: 136px;
+}
+
+#rightPanelButtonsParent .horizontalLine {
+    position: relative;
+    left: 3px;
+    height: 1px;
+    width: 144px;
+    background-color: #7D93A8;
+    margin-bottom: 7px;
+}

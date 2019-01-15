@@ -1,0 +1,109 @@
+#form {
+    position: absolute;
+    top: 55px;
+    bottom: 45px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+#addQuestionInstruction {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    width: 310px;
+    color: rgba(228, 141, 2, 0.5);
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: -155px;
+    text-align: center;
+    z-index: 999;
+    pointer-events:none;
+}
+
+.configuration {
+    padding: 6px 0 0 12px;
+    border-color: #C0D7ED;
+    border-style: dashed;
+    border-width: 1px;
+    cursor: move;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.selectedConfiguration {
+    border-color: rgb(228, 141, 2);
+    border-style: solid;
+}
+
+.configurationError {
+    border-color: red;
+}
+
+.calculatedTooltip {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    color: darkblue;
+    font-weight: bold;
+}
+
+#ui-datepicker-div {
+    font-size: 12px;
+    z-index: 91 !important;
+}
+
+.ui-selectable-helper {
+    position: absolute;
+    z-index: 100;
+    border: 1px dotted black;
+}
+
+.gridster .preview-holder {
+    background-color: #F1F1F1 !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25) !important;
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25) !important;
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.25) !important;
+    opacity: 1 !important;
+}
+
+.table-cell {
+    position: absolute
+}
+
+.block-child {
+    position: absolute
+}
+
+.ui-contextmenu {
+    list-style: none;
+    padding: 5px 0px;
+    margin: 0;
+    display: block;
+    outline: none;
+    border: 1px solid #bababa;
+    background: #ffffff;
+    font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+    font-size: 11.5px;
+    z-index: 100;
+    box-shadow: 5px 5px 3px -3px #888888;
+}
+
+.ui-contextmenu .ui-menu-item a {
+    color: black !important;
+    padding: 3px 25px;
+}
+
+.ui-contextmenu .ui-menu-item a:hover {
+    background: #F1F1F1;
+}
