@@ -2,82 +2,64 @@
 <html>
 <head>
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/resources/lib/pa/jquery/plugins/jquery.mask.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/lib/jquery/jquery-ui-1.10.3/themes/base/jquery.ui.datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/lib/jquery/plugins/jquery.gridster.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/lib/pa/jquery/style/jquery-ui-1.10.3-resizable.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/lib/pa/jquery/style/jquery.ui.datepicker.theme.css" />
-    <link rel="stylesheet" type="text/css" href="style/form.css" />
-    <link rel="stylesheet" type="text/css" href="style/library.css" />
-    <link rel="stylesheet" type="text/css" href="style/formEditor.css" />
-    <link rel="stylesheet" type="text/css" href="style/leftPanel.css" />
-    <link rel="stylesheet" type="text/css" href="style/rightPanel.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mask.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.ui.datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.gridster.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3-resizable.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.ui.datepicker.theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <link rel="stylesheet" type="text/css" href="css/formEditor.css" />
+    <link rel="stylesheet" type="text/css" href="css/leftPanel.css" />
+    <link rel="stylesheet" type="text/css" href="css/rightPanel.css" />
 
     <!-- Third Party Libraries -->
-    <script type="text/javascript" src="/resources/lib/jquery/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="/resources/lib/jquery/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/resources/lib/jquery/plugins/jquery.gridster.js"></script>
-    <script type="text/javascript" src="/resources/lib/jquery/plugins/jquery.ui-contextmenu.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.gridster.js"></script>
+    <script type="text/javascript" src="js/jquery.ui-contextmenu.min.js"></script>
 
     <!-- PA Libraries -->
-    <script type="text/javascript" src="/resources/lib/pa/shim/shim.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/util/NamespaceUtil.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/util/ExceptionHandlingUtil.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/util/InputUtil.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/util/URLParametersUtil.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/util/ObjectUtil.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/util/FormulaValidationUtil.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/object/SortedList.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/prototype/Date.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/jquery/plugins/jquery.mask.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/jquery/plugins/jquery.selectable.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/Products.js"></script>
-
-    <!-- PAGrid Framework -->
-    <script type="text/javascript" src="/resources/lib/pa/grid/eventbus/Events.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/document/eventbus/Events.js"></script>
+    <script type="text/javascript" src="js/shim.js"></script>
+    <script type="text/javascript" src="js/NamespaceUtil.js"></script>
+    <script type="text/javascript" src="js/ExceptionHandlingUtil.js"></script>
+    <script type="text/javascript" src="js/InputUtil.js"></script>
+    <script type="text/javascript" src="js/URLParametersUtil.js"></script>
+    <script type="text/javascript" src="js/ObjectUtil.js"></script>
+    <script type="text/javascript" src="js/FormulaValidationUtil.js"></script>
+    <script type="text/javascript" src="js/SortedList.js"></script>
+    <script type="text/javascript" src="js/Date.js"></script>
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+    <script type="text/javascript" src="js/jquery.selectable.js"></script>
+    <script type="text/javascript" src="js/Products.js"></script>
 
     <!-- Form Framework -->
-    <script type="text/javascript" src="/resources/lib/pa/form/eventbus/Events.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/AbstractQuestionType.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Label.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Textbox.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Textarea.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Select.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Radio.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Checkbox.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/DateSelector.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Document.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionType/Calculation.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionContainerType/Section.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/fields/questionContainerType/Table.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/Option.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/Format.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/Question.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/Layout.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/Configuration.js"></script>
-    <script type="text/javascript" src="/resources/lib/pa/form/Form.js"></script>
-
     <script type="text/javascript" src="js/fields/AbstractField.js"></script>
-    <script type="text/javascript" src="js/fields/question/AbstractQuestionField.js"></script>
-    <script type="text/javascript" src="js/fields/question/Checkbox.js"></script>
-    <script type="text/javascript" src="js/fields/question/DateSelector.js"></script>
-    <script type="text/javascript" src="js/fields/question/Document.js"></script>
-    <script type="text/javascript" src="js/fields/question/Label.js"></script>
-    <script type="text/javascript" src="js/fields/question/Radio.js"></script>
-    <script type="text/javascript" src="js/fields/question/Select.js"></script>
-    <script type="text/javascript" src="js/fields/question/Textarea.js"></script>
-    <script type="text/javascript" src="js/fields/question/Textbox.js"></script>
-    <script type="text/javascript" src="js/fields/question/Calculation.js"></script>
-    <script type="text/javascript" src="js/fields/questionContainer/AbstractQuestionContainerField.js"></script>
-    <script type="text/javascript" src="js/fields/questionContainer/Section.js"></script>
-    <script type="text/javascript" src="js/fields/questionContainer/Table.js"></script>
     <script type="text/javascript" src="js/fields/questionTemplate/DefaultOptionsTemplate.js"></script>
-    <script type="text/javascript" src="js/fields/questionTemplate/RadioYesNoTemplate.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/AbstractQuestionType.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Label.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Textbox.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Textarea.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Select.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Radio.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Checkbox.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/DateSelector.js"></script>
+    <script type="text/javascript" src="js/fields/questionType/Calculation.js"></script>
+    <script type="text/javascript" src="js/Option.js"></script>
+    <script type="text/javascript" src="js/Format.js"></script>
+    <script type="text/javascript" src="js/Question.js"></script>
+    <script type="text/javascript" src="js/Layout.js"></script>
+    <script type="text/javascript" src="js/Configuration.js"></script>
+    <script type="text/javascript" src="js/Form.js"></script>
+    <script type="text/javascript" src="js/FormEventHandlerManager.js"></script>
+    <script type="text/javascript" src="js/FormEditor.js"></script>
+    <script type="text/javascript" src="js/LeftPanel.js"></script>
+    <script type="text/javascript" src="js/RightPanel.js"></script>
+
     <script type="text/javascript" src="js/leftPanel/BlockButtonModule.js"></script>
     <script type="text/javascript" src="js/leftPanel/CreateTableButton.js"></script>
     <script type="text/javascript" src="js/leftPanel/ChangeQuestionTypeOperation.js"></script>
     <script type="text/javascript" src="js/leftPanel/ExcelImport.js"></script>
+
     <script type="text/javascript" src="js/rightPanel/QuestionTextModule.js"></script>
     <script type="text/javascript" src="js/rightPanel/HiddenOnReportModule.js"></script>
     <script type="text/javascript" src="js/rightPanel/RequiredModule.js"></script>
@@ -94,27 +76,12 @@
     <script type="text/javascript" src="js/rightPanel/DeleteButtonModule.js"></script>
     <script type="text/javascript" src="js/rightPanel/BlockUngroupModule.js"></script>
     <script type="text/javascript" src="js/rightPanel/UndoDeleteButtonModule.js"></script>
-    <script type="text/javascript" src="js/Option.js"></script>
-    <script type="text/javascript" src="js/Question.js"></script>
-    <script type="text/javascript" src="js/Configuration.js"></script>
-    <script type="text/javascript" src="js/Form.js"></script>
-    <script type="text/javascript" src="js/FormEventHandlerManager.js"></script>
-    <script type="text/javascript" src="js/Library.js"></script>
-    <script type="text/javascript" src="js/FormEditor.js"></script>
-    <script type="text/javascript" src="js/LeftPanel.js"></script>
-    <script type="text/javascript" src="js/RightPanel.js"></script>
-    <script type="text/javascript" src="js/ConvertToGridFormModule.js"></script>
 </head>
 <body>
 <div id="centerDiv">
     <div id="headerDiv">
         <input id="formName" type="text" class="shadow" onfocus="if(this.value==='Name'){this.value='';}"
                onblur="if(this.value===''){this.value='Name';}"/>
-        <div id="iconWrapper">
-            <a href="/WebHelp_Sourcing_Intel/WebHelp_Sourcing_Intel.htm#Datasheets/DatasheetBuilder/ds_builder.htm?Highlight=import" target="_blank">
-                <img id="helpIcon" src="/resources/images/form/help_icon.svg" alt="Online Help & Import Template" title="Online Help & Import Template">
-            </a>
-        </div>
     </div>
     <div id="form" tabindex="1" class="panel shadow">
         <div id="addQuestionInstruction">Drag fields here.</div>
@@ -161,20 +128,8 @@
             <div class="addConfiguration" questionType="DATESELECTOR" title="Add a Date Selector to the bottom">+</div>
         </div>
         <div class="questionTypeWrapper">
-            <div id="DOCUMENT" class="questionType" title="File uploaded as a response">File Upload</div>
-            <div class="addConfiguration" questionType="DOCUMENT" title="Add a Document to the bottom">+</div>
-        </div>
-        <div class="questionTypeWrapper">
             <div id="CALCULATION" class="questionType" title="Response calculated from other responses">Calculation</div>
             <div class="addConfiguration" questionType="CALCULATION" title="Add a Calculation to the bottom">+</div>
-        </div>
-        <div class="questionTypeWrapper">
-            <div id="SECTION" class="questionContainerType" title="Grouping of plain text and responses">Block</div>
-            <div class="addConfiguration" questionContainerType="SECTION" title="Add a Block to the bottom">+</div>
-        </div>
-        <div class="questionTypeWrapper">
-            <div id="TABLE" class="questionContainerType" title="Collection of responses in a table layout">Table</div>
-            <div class="addConfiguration" questionContainerType="TABLE" title="Add a Table to the bottom">+</div>
         </div>
         <div class="questionTypeWrapper">
             <div class="questionType" questionTemplate="RadioYesNoTemplate" title="Select a response from a radio button (yes/no options preconfigured)">Yes/No</div>
