@@ -1,7 +1,7 @@
-( function(thisUtil, undefined) {
+( function(thisUtil) {
         thisUtil.getErrorMessage = getErrorMessage;
 
-        var CONTACT_MESSAGE = 'Phone: (857) 453 - 5800<br/>  Email: support@poweradvocate.com';
+        let CONTACT_MESSAGE = 'Phone: (857) 453 - 5800<br/>  Email: support@poweradvocate.com';
 
 
         function getErrorMessage(timedOut, responseText) {
@@ -20,14 +20,14 @@
         }
 
         function getPlatformErrorTitleAndMessage(responseText) {
-            var serverErrorDetails;
-            var message = 'There was an error processing your request:';
+            let serverErrorDetails;
+            let message = 'There was an error processing your request:';
             try {
-                var jsonData = JSON.parse(responseText);
-                var referenceCode = jsonData.referenceCode;
+                let jsonData = JSON.parse(responseText);
+                let referenceCode = jsonData.referenceCode;
 
                 if (referenceCode) {
-                    var identifier = jsonData.identifier;
+                    let identifier = jsonData.identifier;
 
                     message += '<br/>  Identifier: ' + identifier + '<br/>  Reference code: ' + referenceCode + '<br/>';
                 } else {

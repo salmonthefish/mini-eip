@@ -1,7 +1,7 @@
 (function(URLParametersUtil, undefined) {
 
     URLParametersUtil.getParameter = function(parameter) {
-        var parameters = _parseParameters(window.location.search);
+        let parameters = _parseParameters(window.location.search);
         return parameters[parameter];
     };
 
@@ -10,7 +10,7 @@
     };
 
     URLParametersUtil.getParentWindowParameter = function(parameter) {
-        var parameters = _parseParameters(window.top.location.search);
+        let parameters = _parseParameters(window.top.location.search);
         return parameters[parameter];
     };
 
@@ -19,7 +19,7 @@
     };
 
     URLParametersUtil.generateQueryParamString = function(params) {
-        var paramKey, queryParamString = '';
+        let paramKey, queryParamString = '';
 
         if(Array.isArray(params) || (typeof params !== 'object')) {
             throw new Error('Unsupported data type!')
@@ -41,10 +41,10 @@
     };
 
     function _parseParameters(queryString) {
-        var match, key, value;
+        let match, key, value;
 
-        var parameters = {};
-        var regex = /[?&;](.+?)=([^&]*)/g;
+        let parameters = {};
+        let regex = /[?&;](.+?)=([^&]*)/g;
 
         while(queryString && (match = regex.exec(queryString))) {
             key = match[1];

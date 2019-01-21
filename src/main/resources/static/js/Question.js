@@ -15,4 +15,4 @@
         };
     };
 
-})(pa.ns('Question'), pa.ns('QuestionType'), pa.ns('Option'));
+})(pa.ns('Question'), pa.ns('QuestionType'));

@@ -40,7 +40,7 @@
             'name': 'file',
             'style': 'display: none'
         }).on('change', function() {
-            if(uploadInput[0].files.length > 0) {
+            if (uploadInput[0].files.length > 0) {
                 _excelDocument = uploadInput[0].files[0];
                 titleInput.val(_excelDocument.name);
             }
@@ -70,7 +70,7 @@
     }
 
     function uploadDocument() {
-        if(_excelDocument) {
+        if (_excelDocument) {
             $(document.body).mask('Importing might take up to two minutes. Please do not close your browser or hit refresh.',
                 {'font-size': '15pt', 'font-weight': 'bold'}, null, true);
 
@@ -88,10 +88,10 @@
     }
 
     function onLoad(event) {
-        if(event.target.status === 200) {
+        if (event.target.status === 200) {
             let response = JSON.parse(event.target.response);
             
-            if(response.errorMessages && response.errorMessages.length > 0) {
+            if (response.errorMessages && response.errorMessages.length > 0) {
                 createPopupWithListText('Error', response.errorMessages);
             } else {
                 let form = $('#form');
@@ -103,25 +103,14 @@
                 response.result.forEach(function(configuration) {
                     updateAndMapConfigurationId(configuration, configIdTranslationMap);
 
-                    if(configuration.questionContainer) {
-                        configuration = configureTableConfiguration(configuration, topOffsetForImportedConfigurations, configIdTranslationMap);
-                    } else {
-                        setDefaultFormat(formData, configuration);
-                        configuration.layout = configureLayout(configuration.layout, topOffsetForImportedConfigurations);
-                        configuration.question.text = configuration.question.text || QuestionType[Format[configuration.question.format].questionType].defaultText;
-                    }
+                    configuration.layout = configureLayout(configuration.layout, topOffsetForImportedConfigurations);
+                    configuration.question.text = configuration.question.text || QuestionType[Format[configuration.question.format].questionType].defaultText;
 
                     importedConfigurations.push(configuration);
                 });
 
                 importedConfigurations.forEach(function(configuration) {
-                    if (configuration.questionContainer) {
-                        configuration.questionContainer.configurations.forEach(function(cellConfig) {
-                            translateExpressionForCalculationQuestion(cellConfig, configIdTranslationMap);
-                        });
-                    } else if(configuration.question) {
-                        translateExpressionForCalculationQuestion(configuration, configIdTranslationMap);
-                    }
+                    translateExpressionForCalculationQuestion(configuration, configIdTranslationMap);
                 });
 
                 reduceWhitespace(importedConfigurations);
@@ -151,60 +140,12 @@
         }
     }
 
-    function configureTableConfiguration(tableConfiguration, topOffset, configIdTranslationMap) {
-        let row = tableConfiguration.layout.height - 1;
-        let col = tableConfiguration.layout.width - 1;
-        let defaultTableConfiguration =  Configuration.create(true, false, 'TABLE', {row: row, col: col});
-        let cellConfigurations =  defaultTableConfiguration.questionContainer.configurations;
-        let importedCellConfigurations = tableConfiguration.questionContainer.configurations;
-        let cellConfigurationsMap = {};
-        cellConfigurations.forEach(function(cellConfig) {
-            let row = Layout.getStyle(cellConfig.layout.style, 'row');
-            let col = Layout.getStyle(cellConfig.layout.style, 'col');
-            cellConfigurationsMap[generateMapKey(row, col)] = cellConfig;
-        });
-        importedCellConfigurations.forEach(function(cellConfig) {
-            let top = cellConfig.layout.top;
-            let left = cellConfig.layout.left;
-            let defaultCellConfig = cellConfigurationsMap[generateMapKey(top-1, left-1)];
-            let originalQuestionText = defaultCellConfig.question.text;
-
-            updateAndMapConfigurationId(cellConfig, configIdTranslationMap);
-
-            defaultCellConfig.id = cellConfig.id;
-            defaultCellConfig.question = cellConfig.question;
-            defaultCellConfig.question.text = defaultCellConfig.question.text || originalQuestionText;
-            defaultCellConfig.defaultAnswers = cellConfig.defaultAnswers;
-            setDefaultFormat(Form.get(), cellConfig);
-
-            if(defaultCellConfig.question.format === Format.LABEL.questionType) {
-                defaultCellConfig.layout.style = Layout.removeStyle(defaultCellConfig.layout.style, 'display');
-            } else {
-                defaultCellConfig.layout.style = Layout.removeStyle(defaultCellConfig.layout.style, 'hidden-on-report');
-            }
-            Table.updateTableQuestionText(defaultTableConfiguration.questionContainer, defaultCellConfig, originalQuestionText, true);
-        });
-
-        defaultTableConfiguration.layout.top = configureLayout(tableConfiguration.layout, topOffset).top;
-        defaultTableConfiguration.layout.left = tableConfiguration.layout.left;
-        return defaultTableConfiguration;
-    }
-
-    function setDefaultFormat(form, configuration) {
-        if(form.formType === 'PRICING_DATASHEET' && configuration.question.format === 'TEXT') {
-            configuration.question.format = 'NUMBER';
-        }
-    }
-
     function generateMapKey(row, col) {
         return row + ':' + col;
     }
 
     function calculateTopOffsetForImportedConfigurations() {
-        let lowestUnoccupiedBottom = 0;
-        if(Form.getMode() === Form.GRIDFORM) {
-            lowestUnoccupiedBottom = 1;
-        }
+        let lowestUnoccupiedBottom = 1;
 
         let existingConfigurations = Form.get().configurations;
         existingConfigurations.forEach(function (config) {
@@ -218,21 +159,7 @@
     }
 
     function configureLayout(layout, topOffset) {
-        if(Form.getMode() === Form.FREEFORM) {
-            return f_configureLayout(layout, topOffset);
-        } else if(Form.getMode() === Form.GRIDFORM) {
-            return g_configureLayout(layout, topOffset);
-        }
-    }
-
-    function f_configureLayout(layout, topOffset) {
-        return {
-            top: (layout.top - 1) * AbstractQuestionField.getDefaultHeight() + topOffset,
-            left: (layout.left - 1) * AbstractQuestionField.getDefaultWidth(),
-            height: layout.height * AbstractQuestionField.getDefaultHeight(),
-            width: layout.width * AbstractQuestionField.getDefaultWidth(),
-            style: layout.style
-        };
+        return g_configureLayout(layout, topOffset);
     }
 
     function g_configureLayout(layout, topOffset) {
@@ -246,9 +173,7 @@
     }
 
     function reduceWhitespace(configurations) {
-        if(Form.getMode() === Form.GRIDFORM) {
-            g_reduceWhitespace(configurations);
-        }
+        g_reduceWhitespace(configurations);
     }
 
     function g_reduceWhitespace(configurations) {

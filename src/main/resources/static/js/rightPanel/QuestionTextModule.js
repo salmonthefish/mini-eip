@@ -28,9 +28,8 @@
         let configDiv = Configuration.getDiv(selected.id);
         let prevTextHeight = configDiv.find('.configQuestionText')[0].scrollHeight;
         Question.renderTo(selected, configDiv);
-        if (QuestionContainerType.TABLE.isTableCell(selected)) {
-            QuestionContainerType.TABLE.updateTableQuestionText(Form.getFromId(selected.formId), selected, originalText);
-        } else if (selected.formId === Form.get().id)  {
+
+        if (selected.formId === Form.get().id)  {
             let currentTextHeight = configDiv.find('.configQuestionText')[0].scrollHeight;
             if (currentTextHeight > configDiv.outerHeight()) {
                 expandQuestionHeight(currentTextHeight, prevTextHeight);
@@ -41,25 +40,7 @@
     function expandQuestionHeight(currentTextHeight, prevTextHeight) {
         let textHeightChange = currentTextHeight - prevTextHeight;
         let selected = Configuration.getSelected()[0], configDiv = Configuration.getDiv(selected.id);
-        if (Form.getMode() === Form.FREEFORM) {
-            f_expandQuestionHeight(configDiv, textHeightChange, selected);
-        } else if (Form.getMode() === Form.GRIDFORM) {
-            g_expandQuestionHeight(configDiv, currentTextHeight);
-        }
-    }
-
-    function f_expandQuestionHeight(configDiv, textHeightChange, selected) {
-        let newConfigHeight = configDiv.outerHeight() + textHeightChange;
-        let configIdsToShift = Configuration.getConfigurationIdsToShiftForVerticalResize(selected.id, textHeightChange);
-        configDiv.css('height', newConfigHeight + 'px');
-        selected.layout.height = newConfigHeight;
-        configIdsToShift.forEach(function (id) {
-            let configDiv = Configuration.getDiv(id);
-            let prevTop = parseInt(configDiv.css('top'));
-            let newTop = prevTop + textHeightChange;
-            configDiv.css('top', newTop + 'px');
-            Configuration.getFromId(id).layout.top = newTop;
-        });
+        g_expandQuestionHeight(configDiv, currentTextHeight);
     }
 
     function g_expandQuestionHeight(configDiv, currentTextHeight) {
@@ -81,33 +62,13 @@
         let me = $(this), selected = Configuration.getSelected()[0];
         if (me.val().length === 0 && selected.question.text.length === 0) {
             if (selected && selected.question) {
-                if (Table.isTableCell(selected)) {
-                    resetTableCellText(me, selected);
-                    Table.updateTableQuestionText(Form.getFromId(selected.formId), selected, '');
-                } else if (selected.question && selected.question.format === 'LABEL') {
+                if (selected.question && selected.question.format === 'LABEL') {
                     me.val(selected.question.text = 'Label');
                 } else {
                     me.val(selected.question.text = 'Question:');
                 }
                 Question.renderTo(selected, Configuration.getDiv(selected.id));
             }
-        }
-    }
-
-    function resetTableCellText(textArea, cellConfig) {
-        let col = Layout.getStyle(cellConfig.layout.style, 'col');
-        let row = Layout.getStyle(cellConfig.layout.style, 'row');
-        let table = Form.getFromId(cellConfig.formId);
-        let colAndRowHeaderText = Table.getColAndRowHeaderText(table, col, row);
-
-        if (col !== '0' && row === '0') {
-            textArea.val(cellConfig.question.text = 'Column ' + col);
-        } else if (col === '0' && row !== '0') {
-            textArea.val(cellConfig.question.text = 'Row ' + row);
-        } else if (col !== '0' && row !== '0') {
-            textArea.val(cellConfig.question.text = colAndRowHeaderText.rowHeaderText + ', ' + colAndRowHeaderText.colHeaderText + ':');
-        } else if (col === '0' && row === '0') {
-            textArea.val(cellConfig.question.text = ' ');
         }
     }
 

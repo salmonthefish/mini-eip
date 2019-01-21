@@ -1,10 +1,10 @@
-(function(undefined) {
+(function() {
 
     Date.prototype.getNumberOfDaysInMonth = function() {
-        var date = this.getDate();
-        var month = this.getMonth();
-        var isLeapYear = this.isLeapYear();
-        var numberOfDaysInMonthArray = [31, (isLeapYear ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        let date = this.getDate();
+        let month = this.getMonth();
+        let isLeapYear = this.isLeapYear();
+        let numberOfDaysInMonthArray = [31, (isLeapYear ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         return numberOfDaysInMonthArray[month];
     };
 
@@ -22,8 +22,8 @@
     };
 
     Date.prototype.addMonths = function(numberOfMonths) {
-        var currentDate = this.getDate();
-        var isCurrentDateLastDateOfMonth = this.isLastDateOfMonth();
+        let currentDate = this.getDate();
+        let isCurrentDateLastDateOfMonth = this.isLastDateOfMonth();
 
         this.setDate(1);
         this.setMonth(this.getMonth() + numberOfMonths);
@@ -42,8 +42,8 @@
     };
 
     Date.prototype.addYears = function(numberOfYears) {
-        var currentDate = this.getDate();
-        var isCurrentDateLastDateOfMonth = this.isLastDateOfMonth();
+        let currentDate = this.getDate();
+        let isCurrentDateLastDateOfMonth = this.isLastDateOfMonth();
 
         this.setDate(1);
         this.setFullYear(this.getFullYear() + numberOfYears);
@@ -62,32 +62,32 @@
     };
 
     Date.prototype.toMMDDYYYY = function() {
-        var date = this.getDate();
-        var month = this.getMonth() + 1;
-        var year = this.getFullYear();
+        let date = this.getDate();
+        let month = this.getMonth() + 1;
+        let year = this.getFullYear();
         return (month < 10 ? '0' + month : month) + '/' + (date < 10 ? '0' + date : date) + '/' + year;
     };
 
     Date.prototype.toAuctionTimeFormat = function() {
-        var month = this.getUTCMonth() + 1;
-        var day = this.getUTCDate();
+        let month = this.getUTCMonth() + 1;
+        let day = this.getUTCDate();
 
-        var hour = this.getUTCHours();
+        let hour = this.getUTCHours();
 
-        var meridiem = 'AM';
+        let meridiem = 'AM';
         if(hour > 12) {
             hour -= 12;
             meridiem = 'PM';
-        }else if(hour == 12) {
+        }else if(hour === 12) {
             meridiem = 'PM';
         }
 
-        var minute = this.getUTCMinutes();
+        let minute = this.getUTCMinutes();
         if(minute < 10) {
             minute = '0' + minute;
         }
 
-        var second = this.getUTCSeconds();
+        let second = this.getUTCSeconds();
         if(second < 10) {
             second = '0' + second;
         }
@@ -96,18 +96,18 @@
     };
 
     Date.prototype.toCountdown = function() {
-        var time = Math.round(this.getTime() / 1000);
+        let time = Math.round(this.getTime() / 1000);
 
-        var days = Math.floor(time / (24 * 60 * 60));
+        let days = Math.floor(time / (24 * 60 * 60));
 
-        var divisor_for_hours = time % (24 * 60 * 60);
-        var hours = Math.floor(divisor_for_hours / (60 * 60));
+        let divisor_for_hours = time % (24 * 60 * 60);
+        let hours = Math.floor(divisor_for_hours / (60 * 60));
 
-        var divisor_for_minutes = divisor_for_hours % (60 * 60);
-        var minutes = Math.floor(divisor_for_minutes / 60);
+        let divisor_for_minutes = divisor_for_hours % (60 * 60);
+        let minutes = Math.floor(divisor_for_minutes / 60);
 
-        var divisor_for_seconds = divisor_for_minutes % 60;
-        var seconds = Math.ceil(divisor_for_seconds);
+        let divisor_for_seconds = divisor_for_minutes % 60;
+        let seconds = Math.ceil(divisor_for_seconds);
 
         return days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds';
     };

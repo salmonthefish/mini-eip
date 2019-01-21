@@ -16,7 +16,7 @@
     };
 
     function onChange() {
-        var selected = Configuration.getSelected()[0];
+        let selected = Configuration.getSelected()[0];
         if ($('#optionPosition').val() === 'horizontal') {
             selected.layout.style = Layout.removeStyle(selected.layout.style, 'option-layout');
         } else if($('#optionPosition').val() === 'vertical') {

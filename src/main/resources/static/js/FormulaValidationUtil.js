@@ -38,7 +38,7 @@
         return configurations.reduce(function(map, configuration) {
             if (configuration.question && Format[configuration.question.format] === Format.CALCULATION) {
                 map[configuration.id] = configuration.defaultAnswers[0].value;
-            } else if(configuration.questionContainer) {
+            } else  (configuration.questionContainer) {
                 let containerMap = FormulaValidationUtil.buildCalculationIdToExpressionMap(configuration.questionContainer.configurations);
                 for(let id in containerMap) {
                     map[id] = containerMap[id];

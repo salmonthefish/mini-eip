@@ -2,8 +2,8 @@
     objectUtil = window.objectUtil || {};
 
     objectUtil.extend = function(object, superObject) {
-        for( var attribute in superObject) {
-            var value = superObject[attribute];
+        for(let attribute in superObject) {
+            let value = superObject[attribute];
             if(value !== null && value instanceof Function) {
                 object[attribute] = objectUtil.extend(value.bind(object), value);
             } else if(value !== null && value instanceof Array) {

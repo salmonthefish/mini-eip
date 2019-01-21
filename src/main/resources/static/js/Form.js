@@ -1,4 +1,4 @@
-(function(Form, Configuration, URLParametersUtil, FormEventHandlerManager, Table, Section, QuestionContainerType, QuestionType, Format, $) {
+(function(Form, Configuration, URLParametersUtil, FormEventHandlerManager, QuestionType, Format, $) {
 
     let _nextId = -1;
     let _originalFormRenderTo = Form.renderTo;
@@ -8,15 +8,7 @@
     };
 
     Form.renderTo = function(form, parent) {
-        if(Form.getMode() === Form.GRIDFORM) {
-            Form.g_renderTo.apply(this, arguments);
-        } else if(Form.getMode() === Form.FREEFORM){
-            Form.f_renderTo.apply(this, arguments);
-        }
-    };
-
-    Form.f_renderTo = function() {
-        _originalFormRenderTo.apply(this, arguments);
+        Form.g_renderTo.apply(this, arguments);
     };
 
     Form.g_renderTo = function(form, parent) {
@@ -115,21 +107,6 @@
         };
     };
 
-    Form.createQuestionContainer = function(formType, settings) {
-        let questionContainer = {
-            id: Form.getNextId(),
-            formMode: Form.getMode(),
-            formType: formType,
-            configurations: QuestionContainerType[formType].generateDefaultConfigurations(settings)
-        };
-
-        questionContainer.configurations.forEach(function(configuration) {
-            configuration.formId = questionContainer.id;
-        });
-
-        return questionContainer;
-    };
-
     Form.render = function(form) {
         form = form ? form : Form.create();
 
@@ -140,27 +117,11 @@
 
         form.configurations.forEach(function(configuration) {
             let configurationDiv = Configuration.getDiv(configuration.id);
-            if(configuration.questionContainer && configuration.questionContainer.formType === 'SECTION' && Form.getMode() === Form.FREEFORM) {
-                Section.addDroppableEventHandlers(configurationDiv);
-            }
         });
     };
 
     Form.addConfigurationsTo = function() {
-        if (Form.getMode() === Form.GRIDFORM) {
-            Form.g_addConfigurationsTo.apply(this, arguments);
-        } else if(Form.getMode() === Form.FREEFORM) {
-            Form.f_addConfigurationsTo.apply(this, arguments);
-        }
-    };
-
-    Form.f_addConfigurationsTo = function(configurations, formDiv) {
-        let form = Form.getFromDiv(formDiv);
-        configurations.forEach(function(configuration){
-            form.configurations.push(configuration);
-            configuration.formId = form.id;
-            Configuration.renderTo(configuration, formDiv);
-        });
+        Form.g_addConfigurationsTo.apply(this, arguments);
     };
 
     Form.g_addConfigurationsTo = function(configurations, formDiv) {
@@ -182,15 +143,13 @@
         configuration.formId = form.id;
 
         Configuration.renderTo(configuration, formDiv);
-        if (Form.getMode() === Form.GRIDFORM) {
-            Form.getGridster().add_widget(
-                Configuration.getDiv(configuration.id),
-                configuration.layout.width,
-                configuration.layout.height,
-                configuration.layout.left,
-                configuration.layout.top
-            );
-        }
+        Form.getGridster().add_widget(
+            Configuration.getDiv(configuration.id),
+            configuration.layout.width,
+            configuration.layout.height,
+            configuration.layout.left,
+            configuration.layout.top
+        );
     };
 
     Form.moveConfigurationTo = function(configuration, formDiv) {
@@ -212,23 +171,12 @@
         Form.removeConfigurationFromDOM(configuration.id);
 
         Configuration.removeFromMap(configuration.id);
-
-        if (configuration.questionContainer) {
-            Form.removeFromMap(configuration.questionContainer.id);
-            configuration.questionContainer.configurations.forEach(function(configuration) {
-                Configuration.removeFromMap(configuration.id);
-            });
-        }
     };
 
     Form.removeConfigurationFromDOM = function(id) {
         let configurationDiv = Configuration.getDiv(id);
 
-        if (Form.getMode() === Form.FREEFORM) {
-            configurationDiv.remove();
-        } else if (Form.getMode() === Form.GRIDFORM) {
-            Form.getGridster().remove_widget(configurationDiv, true);
-        }
+        Form.getGridster().remove_widget(configurationDiv, true);
     };
 
     Form.validate = function(form) {
@@ -254,5 +202,5 @@
         return _gridster;
     };
 
-})(pa.ns('Form'), pa.ns('Configuration'), pa.ns('FormEventHandlerManager'), pa.ns('QuestionContainerType'),
+})(pa.ns('Form'), pa.ns('Configuration'), pa.ns('FormEventHandlerManager'),
     pa.ns('QuestionType'), pa.ns('Format'), jQuery);

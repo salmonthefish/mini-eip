@@ -1,8 +1,8 @@
 (function(RightPanel, $) {
 
-    var _accordionPanelMap = {};
-    var _accordionPanelModuleMap = {};
-    var _buttonMap = {};
+    let _accordionPanelMap = {};
+    let _accordionPanelModuleMap = {};
+    let _buttonMap = {};
 
     $(document).ready(function() {
         $('#rightPanelAccordion').accordion({
@@ -51,9 +51,9 @@
     };
 
     RightPanel.addButton = function(buttonName, button) {
-        var rightPanelButtonsParent = $('#rightPanelButtonsParent');
+        let rightPanelButtonsParent = $('#rightPanelButtonsParent');
 
-        if (rightPanelButtonsParent.children().length == 0) {
+        if (rightPanelButtonsParent.children().length === 0) {
             rightPanelButtonsParent.append($('<div>').addClass('horizontalLine'));
         }
 
@@ -65,8 +65,8 @@
         if (_buttonMap[buttonName]) {
             _buttonMap[buttonName].remove();
         }
-        var rightPanelButtonsParent = $('#rightPanelButtonsParent');
-        if (rightPanelButtonsParent.children().length == 1) {
+        let rightPanelButtonsParent = $('#rightPanelButtonsParent');
+        if (rightPanelButtonsParent.children().length === 1) {
             rightPanelButtonsParent.find('.horizontalLine').remove();
         }
     };

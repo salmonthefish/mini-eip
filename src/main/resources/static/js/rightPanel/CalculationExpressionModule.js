@@ -58,14 +58,9 @@
 
         configurations.forEach(function(configuration) {
             if (configuration.id !== selectedConfiguration.id) {
-                if (configuration.questionContainer) {
-                    let questionContainerConfigurations = findAllCalculableConfigurationsSortedByTopLeft(selectedConfiguration, configuration.questionContainer.configurations);
-                    desiredConfigurations = desiredConfigurations.concat(questionContainerConfigurations);
-                } else if (configuration.question) {
-                    let questionType = Format[configuration.question.format].questionType;
-                    if (Calculation.isEligibleQuestionType(questionType)) {
-                        desiredConfigurations.push(configuration);
-                    }
+                let questionType = Format[configuration.question.format].questionType;
+                if (Calculation.isEligibleQuestionType(questionType)) {
+                    desiredConfigurations.push(configuration);
                 }
             }
         });

@@ -1,4 +1,4 @@
-(function(FormEventHandlerManager, Form, Configuration, QuestionContainerType, QuestionType, Format, QuestionTemplate, Layout, AlertPopup, $) {
+(function(FormEventHandlerManager, Form, Configuration, QuestionType, Format, QuestionTemplate, Layout, AlertPopup, $) {
 
     let _prevConfigurationDiv = $('#form'), _prevCellDiv;
     let _prevInputElement = null;
@@ -37,7 +37,7 @@
                 {title: 'Delete empty row', cmd: 'delete-row'}
             ],
             select: function(event, ui) {
-                if(ui.cmd === 'delete-row') {
+                if (ui.cmd === 'delete-row') {
                     FormEventHandlerManager.deleteEmptyRow();
                 }
             }
@@ -74,11 +74,7 @@
     FormEventHandlerManager.handleDroppableDrop = function(event, ui) {
          if(!event.originalEvent.cancelled) {
             event.originalEvent.cancelled = true;
-            if (Form.getMode() === Form.FREEFORM) {
-                f_handleDroppableDrop(ui);
-            } else if(Form.getMode() === Form.GRIDFORM) {
-                g_handleDroppableDrop(ui);
-            }
+            g_handleDroppableDrop(ui);
          }
     };
 
@@ -204,11 +200,7 @@
     };
 
     function addModeSpecificHandler(div) {
-        if(Form.getMode() === Form.GRIDFORM) {
-            g_addModeSpecificHandler(div);
-        } else if(Form.getMode() === Form.FREEFORM) {
-            f_addModeSpecificHandler(div);
-        }
+        g_addModeSpecificHandler(div);
     }
 
     function g_addModeSpecificHandler(div){
@@ -250,52 +242,6 @@
             }
             Table.addEventHandlersToTableCell(currentCellDiv);
             _prevCellDiv = currentCellDiv;
-        }
-    }
-
-    function f_addModeSpecificHandler(div) {
-        div.on('mousemove', f_handleMouseMove);
-    }
-
-    function f_handleDroppableDrop(ui) {
-        let div = Form.getDiv(), configuration;
-        if (ui.draggable.is('.questionContainerType') || ui.draggable.is('.questionType')) {
-            if (ui.draggable.attr('libraryId') && ui.draggable.attr('configurationId')) {
-                let library = Library.get(ui.draggable.attr('libraryId'));
-                for (let i = 0; i < library.configurations.length; i++) {
-                    if (library.configurations[i].id === parseInt(ui.draggable.attr('configurationId'))) {
-                        configuration = Configuration.copy(library.configurations[i]);
-                        break;
-                    }
-                }
-            } else {
-                let divId = ui.draggable.attr('id');
-
-                let questionTemplate = ui.draggable.attr('questionTemplate');
-                let type = divId ? divId : QuestionTemplate[questionTemplate].questionType;
-
-
-                let isQuestionContainer = ui.draggable.is('.questionContainerType');
-                let isQuestion = ui.draggable.is('.questionType');
-
-                configuration = Configuration.create(isQuestionContainer, isQuestion, type);
-
-                if (questionTemplate) {
-                    QuestionTemplate[questionTemplate].appendTemplate(configuration);
-                }
-            }
-            let coords = translateToFormCoordinates(ui.position.top, ui.position.left);
-
-            configuration.layout.top = coords.top;
-            configuration.layout.left = coords.left;
-
-            Form.addConfigurationTo(configuration, div);
-            Configuration.select([configuration]);
-        } else {
-            ui.position.top -= ui.position.top % 10;
-            ui.position.left -= ui.position.left % 10;
-
-            Form.moveConfigurationTo(Configuration.getFromDiv(ui.draggable), div);
         }
     }
 
@@ -348,17 +294,6 @@
         });
 
         Configuration.select(selectedConfs);
-    }
-
-    function f_handleMouseMove(event) {
-        if (!event.buttons) {
-            let newConfigurationDiv = getDivToAddEventHandlersTo($(event.target));
-            if(newConfigurationDiv[0] !== _prevConfigurationDiv[0]) {
-                removeEventHandlersFromConfigurationDiv(_prevConfigurationDiv);
-                addEventHandlersToConfigurationDiv(newConfigurationDiv);
-                _prevConfigurationDiv = newConfigurationDiv;
-            }
-        }
     }
 
     function getDivToAddEventHandlersTo(div) {
@@ -418,6 +353,5 @@
         };
     }
 
-})(pa.ns('FormEventHandlerManager'), pa.ns('Form'), pa.ns('Configuration'), pa.ns('QuestionContainerType'),
-    pa.ns('QuestionContainerType.TABLE'), pa.ns('QuestionType'), pa.ns('Format'), pa.ns('QuestionTemplate'),
-    pa.ns('Layout'), pa.ns('AlertPopup'), jQuery);
+})(pa.ns('FormEventHandlerManager'), pa.ns('Form'), pa.ns('Configuration'), pa.ns('QuestionType'),
+    pa.ns('Format'), pa.ns('QuestionTemplate'), pa.ns('Layout'), pa.ns('AlertPopup'), jQuery);

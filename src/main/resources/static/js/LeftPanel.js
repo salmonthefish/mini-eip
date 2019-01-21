@@ -15,7 +15,7 @@
     };
 
     function render() {
-        var $leftPanel = $('#leftPanel');
+        let $leftPanel = $('#leftPanel');
 
         if(Form.getMode() === Form.GRIDFORM) {
             $('[questionContainerType="SECTION"]').addClass('disabledAddButton');
@@ -64,12 +64,11 @@
         let newPosition = LeftPanel.calculateNewPosition();
 
         if (newPosition !== undefined) {
-            var questionContainerType  = $(this).attr('questionContainerType');
-            var questionType = $(this).attr('questionType');
-            var questionTemplate = $(this).attr('questionTemplate');
-            var type = questionContainerType ? questionContainerType : (questionType ? questionType : QuestionTemplate[questionTemplate].questionType);
+            let questionType = $(this).attr('questionType');
+            let questionTemplate = $(this).attr('questionTemplate');
+            let type = questionType ? questionType : QuestionTemplate[questionTemplate].questionType;
             
-            configuration = Configuration.create(questionContainerType !== undefined, questionTemplate !== undefined || questionType !== undefined, type);
+            configuration = Configuration.create(questionTemplate !== undefined || questionType !== undefined, type);
 
             if (questionTemplate) {
                 QuestionTemplate[questionTemplate].appendTemplate(configuration);
@@ -102,21 +101,11 @@
         }
     };
 
-    function f_calculateNewPosition() {
-        var configurations = Form.get().configurations;
-        var newTopPosition = 0;
-        configurations.forEach(function(config) {
-            var value = config.layout.top + config.layout.height;
-            newTopPosition = value > newTopPosition ? value : newTopPosition;
-        });
-        return {top: newTopPosition, left: 0};
-    }
-
     function g_calculateNewPosition() {
-        var widgets = Form.getGridster().serialize();
-        var newTopPosition = 1;
+        let widgets = Form.getGridster().serialize();
+        let newTopPosition = 1;
         widgets.forEach(function(widget) {
-            var value = widget.row + widget.size_y;
+            let value = widget.row + widget.size_y;
             newTopPosition = value > newTopPosition ? value : newTopPosition;
         });
         if(newTopPosition > Form.getGridster().options.max_rows) {
@@ -128,9 +117,7 @@
     LeftPanel.handleDrag = function(event, ui) {
         LeftPanel.translateHelperPositionTo10x10Grid(ui);
 
-        if (Form.getMode() === Form.GRIDFORM) {
-            return FormEventHandlerManager.dragAndScroll(ui.position);
-        }
+        return FormEventHandlerManager.dragAndScroll(ui.position);
     };
     
     LeftPanel.translateHelperPositionTo10x10Grid = function(ui) {
@@ -142,11 +129,7 @@
     };
 
     function getHelperDimensions($targetDiv) {
-        if (Form.getMode() === Form.FREEFORM){
-            return f_getHelperDimensions($targetDiv)
-        } else if(Form.getMode() === Form.GRIDFORM){
-            return g_getHelperDimensions($targetDiv);
-        }
+        return g_getHelperDimensions($targetDiv);
     }
 
     function g_getHelperDimensions($targetDiv) {
@@ -154,13 +137,10 @@
             questionTemplate = $targetDiv.attr('questiontemplate'),
             type = $targetDiv.attr('id') ? $targetDiv.attr('id') : QuestionTemplate[questionTemplate].questionType;
 
-        if (QuestionContainerType[type]) {
-            dimensions.width = QuestionContainerType[type].getDefaultWidth() * Form.getGridCellWidth();
-            dimensions.height = QuestionContainerType[type].getDefaultHeight() * Form.getGridCellHeight();
-        } else {
-            dimensions.width = Form.getGridCellWidth() * AbstractQuestionField.getDefaultWidth();
-            dimensions.height = Form.getGridCellHeight() * AbstractQuestionField.getDefaultHeight();
-        }
+
+        dimensions.width = Form.getGridCellWidth() * AbstractQuestionField.getDefaultWidth();
+        dimensions.height = Form.getGridCellHeight() * AbstractQuestionField.getDefaultHeight();
+
         return dimensions;
     }
 
@@ -169,17 +149,12 @@
             questionTemplate = $targetDiv.attr('questiontemplate'),
             type = $targetDiv.attr('id') ? $targetDiv.attr('id') : QuestionTemplate[questionTemplate].questionType;
 
-        if (QuestionContainerType[type]) {
-            dimensions.width = QuestionContainerType[type].getDefaultWidth();
-            dimensions.height = QuestionContainerType[type].getDefaultHeight();
-        } else {
-            dimensions.width = AbstractQuestionField.getDefaultWidth();
-            dimensions.height = AbstractQuestionField.getDefaultHeight();
-        }
+        dimensions.width = AbstractQuestionField.getDefaultWidth();
+        dimensions.height = AbstractQuestionField.getDefaultHeight();
 
         return dimensions;
     }
 
-})(pa.ns('LeftPanel'), pa.ns('Library'), pa.ns('InputUtil'), pa.ns('Configuration'), pa.ns('Form'),
-    pa.ns('QuestionTemplate'), pa.ns('QuestionType.AbstractQuestionField'), pa.ns('QuestionContainerType'),
-    pa.ns('AlertPopup'), pa.ns('FormEventHandlerManager'), pa.ns('QuestionType.TEXTBOX'), jQuery);
+})(pa.ns('LeftPanel'), pa.ns('InputUtil'), pa.ns('Configuration'), pa.ns('Form'),
+    pa.ns('QuestionTemplate'), pa.ns('QuestionType.AbstractQuestionField'), pa.ns('AlertPopup'),
+    pa.ns('FormEventHandlerManager'), pa.ns('QuestionType.TEXTBOX'), jQuery);

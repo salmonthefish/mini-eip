@@ -9,14 +9,12 @@
     $(document).ready(function() {
         $(document).tooltip();
         $(document).on('mouseup', removeQuestionInstructions);
-        EventBusClient.sendEvent(GridEvents.IframeModalWindow.Maximize);
 
         if (_id) {
             fetchFormDataAndRender(_id, '#saveButton');
         } else if (_copyId) {
             fetchFormDataAndRender(_copyId, '#createButton');
         } else {
-            Form.setMode(URLParametersUtil.getParentWindowParameter('freeFormMode') ? Form.FREEFORM : Form.GRIDFORM);
             Form.render();
             $('#createButton').show();
             LeftPanel.initialize();
@@ -52,19 +50,11 @@
         });
     };
 
-    window.cancel = function() {
-        EventBusClient.sendEvent(GridEvents.IframeModalWindow.Close);
-    };
-
     function fetchFormDataAndRender(id, buttonSelector) {
         showMask('Loading...');
         $.get('/' + Products.URLPrefixes[_productKey] + '/commonModule/forms/' + id, function(data) {
             Form.setMode(data.formMode);
             Form.render(data);
-
-            if(Form.getMode() === Form.FREEFORM) {
-                ConvertToGridFormModule.init();
-            }
 
             $(buttonSelector).show();
             $(document.body).unmask();
@@ -116,11 +106,6 @@
             $(document.body).unmask();
             func();
         }
-    }
-
-    function onSuccess(data) {
-        EventBusClient.sendEventToParent(FormEvents.Form.Save, data);
-        EventBusClient.sendEvent(GridEvents.IframeModalWindow.Close);
     }
 
     function showMask(message) {

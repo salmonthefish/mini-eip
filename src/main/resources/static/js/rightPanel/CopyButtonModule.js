@@ -20,29 +20,7 @@
     }
 
     function copyConfiguration(configurationToCopy) {
-        if (Form.getMode() === Form.FREEFORM) {
-            return f_copyConfiguration(configurationToCopy);
-        } else if(Form.getMode() === Form.GRIDFORM) {
-            return g_copyConfiguration(configurationToCopy);
-        }
-    }
-
-    function f_copyConfiguration(configurationToCopy) {
-        let copiedConfiguration = Configuration.copy(configurationToCopy);
-        let questionContainerConfig = Configuration.getFromDiv(Form.getDiv(configurationToCopy.formId));
-
-        //the base form does not have a configuration so we can identify that way
-        //(if it's not a base form, i.e. it has a configuration, then its parent is a question container)
-        let isBaseForm = questionContainerConfig == null;
-
-        //offset either from the top left of the base form, or from the top left of your enclosing question container
-        copiedConfiguration.layout.top += isBaseForm ? _offsetTop : questionContainerConfig.layout.top + _offsetTop;
-        copiedConfiguration.layout.left += isBaseForm ? _offsetLeft : questionContainerConfig.layout.left + _offsetLeft;
-
-        Form.addConfigurationTo(copiedConfiguration, Form.getDiv());
-        Configuration.validate(copiedConfiguration, true);
-
-        return copiedConfiguration;
+        return g_copyConfiguration(configurationToCopy);
     }
 
     function g_copyConfiguration(configurationToCopy) {
